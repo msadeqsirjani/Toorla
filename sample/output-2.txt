@@ -1,0 +1,51 @@
+program start {
+	class: Operand / class parent: Object / isEntry: false {
+		class constructor: Operand / return type: int / type: public {
+			parameter list: []
+		}
+		class constructor: Operand / return type: int / type: public {
+			parameter list: [type: int / name: a], [type: int / name: b]
+		}
+	}
+	class: Operator / class parent: Test / isEntry: false {
+		filed: valueOne / type: int
+		filed: valueTwo / type: boolean
+		filed: valueThree / type: string
+		filed: valueFour / type: Operand
+		class constructor: Operator / return type: int / type: public {
+			parameter list: []
+		}
+		class method: subtractor / return type: int / type: public {
+			parameter list: [type: int / name: a], [type: int / name: b]
+		}
+		class method: arrCollector / return type: int / type: public {
+			parameter list: [type: int[] / name: arr]
+			field: counter / type: local var
+			field: bitmap / type: local var
+		}
+		class method: comparator / return type: string / type: public {
+			parameter list: [type: int / name: a], [type: int / name: b]
+			nested {
+				field: distance / type: local var
+				field: emergency / type: local var
+			}
+			nested {
+				field: happiness / type: local var
+			}
+		}
+	}
+	class: MainClass / class parents: none / isEntry: true {
+		main method / type int {
+			field: a / type: local var
+			field: b / type: local var
+			field: arr / type: int[]
+			field: sum / type: local var
+			field: sub / type: local var
+			field: bigger / type: local var
+			field: operator / type: Operator
+			field: distance / type: local var
+			field: operand1 / type: Operand
+			field: operator / type: Operand
+		}
+	}
+}
