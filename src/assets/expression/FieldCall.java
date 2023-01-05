@@ -20,7 +20,7 @@ public class FieldCall extends Expression {
     }
 
     @Override
-    public <T> T visit(Visitor<T> visitor) {
+    public <T> T accept(Visitor<T> visitor) {
         return visitor.visit(this);
     }
 
