@@ -5,6 +5,10 @@ import java.util.*;
 public class Graph<T> {
     private final Map<T, Set<T>> parentShipRelation;
 
+    public Graph() {
+        this.parentShipRelation = new HashMap<>();
+    }
+
     public Graph(Map<T, Set<T>> parentShipRelation) {
         this.parentShipRelation = parentShipRelation;
     }

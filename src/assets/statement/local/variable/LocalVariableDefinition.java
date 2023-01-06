@@ -17,7 +17,7 @@ public class LocalVariableDefinition extends Statement {
         definitions.add(definition);
     }
 
-    public List<LocalVariableDef> getVarDefinitions() {
+    public List<LocalVariableDef> getDefinitions() {
         return definitions;
     }
 

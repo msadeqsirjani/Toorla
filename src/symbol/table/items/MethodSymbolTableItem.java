@@ -7,7 +7,7 @@ import types.Type;
 import java.util.List;
 
 public class MethodSymbolTableItem extends SymbolTableItem {
-    private static final String methodModifier = "method_";
+    public static final String methodModifier = "method_";
 
     private Type returnedType;
     private List<Type> argumentsType;
