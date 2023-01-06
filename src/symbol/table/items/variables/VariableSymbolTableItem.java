@@ -4,20 +4,19 @@ import symbol.table.items.SymbolTableItem;
 import types.Type;
 
 public class VariableSymbolTableItem extends SymbolTableItem {
-    protected Type variableType;
+    protected Type varType;
 
-    public static String variableModifier = "var_";
+    public static String var_modifier = "var_";
 
-    @Override
     public String getKey() {
-        return VariableSymbolTableItem.variableModifier + name;
+        return VariableSymbolTableItem.var_modifier + name;
     }
 
-    public Type getVariableType() {
-        return variableType;
+    public Type getVarType() {
+        return varType;
     }
 
-    public void setVariableType(Type variableType) {
-        this.variableType = variableType;
+    public void setVarType(Type varType) {
+        this.varType = varType;
     }
 }

@@ -1,5 +1,5 @@
 package types;
 
-public abstract class Type {
+abstract public class Type {
     public abstract String toString();
 }

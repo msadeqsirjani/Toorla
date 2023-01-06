@@ -1,15 +1,22 @@
 package symbol.table.items.variables;
 
-import assets.declaration.description.member.AccessModifier;
+import assets.declarations.classes.members.AccessModifier;
 import types.Type;
 
 public class FieldSymbolTableItem extends VariableSymbolTableItem {
+
     private AccessModifier accessModifier;
 
-    public FieldSymbolTableItem(String name, AccessModifier accessModifier, Type variableType) {
+    public FieldSymbolTableItem(String name, AccessModifier accessModifier, Type type) {
         this.name = name;
-        this.variableType = variableType;
         this.accessModifier = accessModifier;
+        this.varType = type;
+    }
+
+    public FieldSymbolTableItem(String name, Type type) {
+        this.name = name;
+        this.accessModifier = AccessModifier.PRIVATE;
+        this.varType = type;
     }
 
     public AccessModifier getAccessModifier() {
@@ -19,4 +26,6 @@ public class FieldSymbolTableItem extends VariableSymbolTableItem {
     public void setAccessModifier(AccessModifier accessModifier) {
         this.accessModifier = accessModifier;
     }
+
+
 }

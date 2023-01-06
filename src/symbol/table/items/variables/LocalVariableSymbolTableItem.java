@@ -7,9 +7,10 @@ public class LocalVariableSymbolTableItem extends VariableSymbolTableItem {
 
     public LocalVariableSymbolTableItem(String name, int index) {
         this.name = name;
-        this.variableType = new AnonymousType();
+        this.varType = new AnonymousType();
         this.index = index;
     }
+
 
     public int getIndex() {
         return index;

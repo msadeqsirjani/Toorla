@@ -1,0 +1,56 @@
+C:\Users\SQ-PC\.jdks\openjdk-19.0.1\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2022.2.4\lib\idea_rt.jar=57138:C:\Program Files\JetBrains\IntelliJ IDEA 2022.2.4\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath D:\Code\Demos\Java\Toorla\out\production\Toorla;D:\Code\Demos\Java\Toorla\lib\antlr4-4.11.1.jar;D:\Code\Demos\Java\Toorla\lib\antlr4-runtime-4.11.1.jar Runner
+((class (Identifier,Operator) (Identifier,Test) ((PRIVATE) field (Identifier,result) (IntType))
+((PUBLIC) method (Identifier,Operator)(IntType) (
+(return (IntValue,1))
+ ) 
+)
+((PUBLIC) method (Identifier,subtractor)( (Identifier,a_1) : (IntType)) ( (Identifier,b_2) : (IntType)) (IntType) (
+(= (. (Self) (Identifier,result)) (- (Identifier,a) (Identifier,b)))
+(return (. (Self) (Identifier,result)))
+ ) 
+)
+((PUBLIC) method (Identifier,arrCollector)( (Identifier,arr_1) : (ArrayType,(IntType))) (IntType) (
+(var (Identifier,counter_2) (IntValue,0))
+(while (< (Identifier,counter) (. (Identifier,arr) (Identifier,length))) (= (. (Self) (Identifier,result)) (+ (. (Self) (Identifier,result)) ([] (Identifier,arr) (Identifier,counter))))
+)
+(return (. (Self) (Identifier,result)))
+ ) 
+)
+((PUBLIC) method (Identifier,comparator)( (Identifier,a_1) : (IntType)) ( (Identifier,b_2) : (IntType)) (StringType) (
+(if (< (Identifier,a) (Identifier,b)) ( 
+(var (Identifier,alaki_3) (IntValue,3))
+(if (< (Identifier,a) (IntValue,0)) (print (StringValue,"a is negative"))
+ (Skip)
+)
+(return (StringValue,"b is bigger than a"))
+)
+ (if (> (Identifier,a) (Identifier,b)) ( 
+(if (< (Identifier,b) (IntValue,0)) (print (StringValue,"b is negative"))
+ (Skip)
+)
+(return (StringValue,"a is bigger than b"))
+)
+ (return (StringValue,"a and b are equal"))
+)
+)
+ ) 
+)
+)
+( entry class (Identifier,MainClass) ((PUBLIC) method (Identifier,main)(IntType) (
+(var (Identifier,a_1) (IntValue,5))
+(var (Identifier,b_2) (IntValue,6))
+(= (Identifier,arr) (new arrayof (IntType) (IntValue,4)))
+(var (Identifier,sum_3) (IntValue,0))
+(var (Identifier,sub_4) (IntValue,0))
+(var (Identifier,bigger_5) (StringValue,""))
+(= (Identifier,operator) (new (Identifier,Operator)))
+(= (Identifier,sub) (. (Identifier,operator) (Identifier,subtractor) () ))
+(= (Identifier,sum) (. (Identifier,operator) (Identifier,arrCollector) ((Identifier,arr) ) ))
+(= (Identifier,bigger) (. (Identifier,operator) (Identifier,comparator) ((Identifier,a) (Identifier,b) ) ))
+(return (IntValue,1))
+ ) 
+)
+)
+)
+
+Process finished with exit code 0

@@ -3,10 +3,10 @@ package symbol.table.items;
 import symbol.table.SymbolTable;
 
 public class ClassSymbolTableItem extends SymbolTableItem {
-    public static final String classModifier = "class_";
 
-    private SymbolTable table;
-    private SymbolTable parent;
+    public static final String classModifier = "class_";
+    private SymbolTable symbolTable;
+    private SymbolTable parentSymbolTable;
 
     public ClassSymbolTableItem(String name) {
         this.name = name;
@@ -17,19 +17,19 @@ public class ClassSymbolTableItem extends SymbolTableItem {
         return ClassSymbolTableItem.classModifier + name;
     }
 
-    public SymbolTable getTable() {
-        return table;
+    public SymbolTable getSymbolTable() {
+        return symbolTable;
     }
 
-    public void setTable(SymbolTable table) {
-        this.table = table;
+    public SymbolTable getParentSymbolTable() {
+        return parentSymbolTable;
     }
 
-    public SymbolTable getParent() {
-        return parent;
+    public void setSymbolTable(SymbolTable symbolTable) {
+        this.symbolTable = symbolTable;
     }
 
-    public void setParent(SymbolTable parent) {
-        this.parent = parent;
+    public void setParentSymbolTable(SymbolTable symbolTable) {
+        this.parentSymbolTable = symbolTable;
     }
 }

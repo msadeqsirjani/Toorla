@@ -1,0 +1,17 @@
+entry class Sample2 :
+    function main() returns int :
+        var a = 2;
+        begin
+            var a = _a && true;
+            a = b || c && 2;
+            var _a = false;
+            var b = _a && true;
+            var c = 1;
+            var d = 1;
+            ( c + d )++;
+            ( c + d )--;
+        end
+        return 0;
+    end
+
+end

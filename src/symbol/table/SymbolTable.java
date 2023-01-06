@@ -4,16 +4,13 @@ import symbol.table.exceptions.ItemAlreadyExistsException;
 import symbol.table.exceptions.ItemNotFoundException;
 import symbol.table.items.SymbolTableItem;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 public class SymbolTable {
-    private SymbolTable table;
+    private SymbolTable pre;
     private Map<String, SymbolTableItem> items;
 
-    // start static members
+    // Static members region
 
     private static SymbolTable top;
     public static SymbolTable root;
@@ -25,73 +22,58 @@ public class SymbolTable {
         return top;
     }
 
-    public static void push(SymbolTable table) {
-        if (top != null) {
-            stack.push(top);
-        }
-
-        top = table;
-
-        queue.offer(table);
-    }
-
     public static void pushFromQueue() {
         push(queue.remove());
+    }
+
+    public static void push(SymbolTable symbolTable) {
+        if (top != null) stack.push(top);
+        top = symbolTable;
+        queue.offer(symbolTable);
     }
 
     public static void pop() {
         top = stack.pop();
     }
 
-    // end static members
+    // End of static members region
 
     public SymbolTable() {
         this(null);
     }
 
-    public SymbolTable(SymbolTable table) {
-        this.table = table;
+    public SymbolTable(SymbolTable pre) {
+        this.pre = pre;
+        this.items = new HashMap<>();
     }
 
     public void put(SymbolTableItem item) throws ItemAlreadyExistsException {
-        if (items.containsKey(item.getKey())) {
-            throw new ItemAlreadyExistsException();
-        }
-
+        if (items.containsKey(item.getKey())) throw new ItemAlreadyExistsException();
         items.put(item.getKey(), item);
     }
 
     public SymbolTableItem get(String key) throws ItemNotFoundException {
-        var visited = new HashSet<SymbolTable>();
-        SymbolTable current = this;
-
+        Set<SymbolTable> visitedSymbolTables = new HashSet<>();
+        SymbolTable currentSymbolTable = this;
         do {
-            visited.add(current);
-            var value = current.items.get(key);
-
-            if (value == null) {
-                current = current.getTable();
-            } else {
-                return value;
-            }
-        } while (current != null && !visited.contains(current));
-
+            visitedSymbolTables.add(currentSymbolTable);
+            SymbolTableItem value = currentSymbolTable.items.get(key);
+            if (value == null) currentSymbolTable = currentSymbolTable.getPreSymbolTable();
+            else return value;
+        } while (currentSymbolTable != null && !visitedSymbolTables.contains(currentSymbolTable));
         throw new ItemNotFoundException();
     }
 
-    public SymbolTableItem getInParentScope(String key) throws ItemNotFoundException {
-        if (table == null) {
-            throw new ItemNotFoundException();
-        } else {
-            return table.get(key);
-        }
+    public SymbolTableItem getInParentScopes(String key) throws ItemNotFoundException {
+        if (pre == null) throw new ItemNotFoundException();
+        else return pre.get(key);
     }
 
-    public SymbolTable getTable() {
-        return table;
+    public SymbolTable getPreSymbolTable() {
+        return pre;
     }
 
-    public void setTable(SymbolTable table) {
-        this.table = table;
+    public void setPreSymbolTable(SymbolTable symbolTable) {
+        pre = symbolTable;
     }
 }

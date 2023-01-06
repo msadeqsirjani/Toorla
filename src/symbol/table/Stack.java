@@ -2,31 +2,26 @@ package symbol.table;
 
 import java.util.ArrayList;
 
-public class Stack<T> {
+public class Stack<E> {
     private int top;
-    private ArrayList<T> elements;
+    private ArrayList<E> elements;
 
     public Stack() {
-        this.top = -1;
-        this.elements = new ArrayList<>();
+        top = -1;
+        elements = new ArrayList<E>();
     }
 
-    public void push(T element) {
-        this.elements.add(element);
-        this.top++;
+    public void push(E pushValue) {
+        elements.add(pushValue);
+        ++top;
     }
 
-    public T pop() {
-        if (this.top == -1) {
+    public E pop() {
+        if (top == -1)
             return null;
-        }
-
         --top;
-
-        var element = elements.get(top + 1);
-
+        E e = elements.get(top + 1);
         elements.remove(top + 1);
-
-        return element;
+        return e;
     }
 }

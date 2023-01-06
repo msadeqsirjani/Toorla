@@ -1,22 +1,20 @@
 package symbol.table.items;
 
-import assets.declaration.description.member.AccessModifier;
-import assets.declaration.description.member.MethodDeclaration;
+import assets.declarations.classes.members.AccessModifier;
 import types.Type;
 
 import java.util.List;
 
 public class MethodSymbolTableItem extends SymbolTableItem {
     public static final String methodModifier = "method_";
-
-    private Type returnedType;
-    private List<Type> argumentsType;
+    private Type returnType;
+    private List<Type> argumentsTypes;
     private AccessModifier accessModifier;
 
-    public MethodSymbolTableItem(String name, Type returnedType, List<Type> argumentsType, AccessModifier accessModifier) {
+    public MethodSymbolTableItem(String name, Type returnType, List<Type> argumentsTypes, AccessModifier accessModifier) {
+        this.returnType = returnType;
+        this.argumentsTypes = argumentsTypes;
         this.name = name;
-        this.returnedType = returnedType;
-        this.argumentsType = argumentsType;
         this.accessModifier = accessModifier;
     }
 
@@ -25,12 +23,13 @@ public class MethodSymbolTableItem extends SymbolTableItem {
         return MethodSymbolTableItem.methodModifier + name;
     }
 
-    public Type getReturnedType() {
-        return returnedType;
+
+    public List<Type> getArgumentsTypes() {
+        return argumentsTypes;
     }
 
-    public List<Type> getArgumentsType() {
-        return argumentsType;
+    public Type getReturnType() {
+        return returnType;
     }
 
     public AccessModifier getAccessModifier() {

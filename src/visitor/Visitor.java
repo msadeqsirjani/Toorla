@@ -1,105 +1,111 @@
 package visitor;
 
 import assets.Program;
-import assets.declaration.description.*;
-import assets.declaration.description.member.*;
-import assets.declaration.local.variable.*;
-import assets.expression.*;
-import assets.expression.binaray.*;
-import assets.expression.unary.*;
-import assets.expression.value.*;
-import assets.statement.*;
-import assets.statement.local.variable.*;
-import assets.statement.returned.*;
+import assets.declarations.classes.ClassDeclaration;
+import assets.declarations.classes.EntryClassDeclaration;
+import assets.declarations.classes.members.FieldDeclaration;
+import assets.declarations.classes.members.MethodDeclaration;
+import assets.declarations.variables.ParameterDeclaration;
+import assets.expressions.*;
+import assets.expressions.binaries.*;
+import assets.expressions.unaries.Negative;
+import assets.expressions.unaries.Not;
+import assets.expressions.value.BoolValue;
+import assets.expressions.value.IntValue;
+import assets.expressions.value.StringValue;
+import assets.statements.*;
+import assets.statements.returned.Return;
+import assets.statements.variables.LocalVariableDef;
+import assets.statements.variables.LocalVariableDefinitions;
+
 
 public interface Visitor<T> {
+    // Statement
+    T visit(Print printStat);
 
-    //    Expression
-    T visit(And expression);
+    T visit(Assign assignStat);
 
-    T visit(Division expression);
+    T visit(Block block);
 
-    T visit(Equal expression);
+    T visit(Conditional conditional);
 
-    T visit(GreaterThan expression);
+    T visit(While whileStat);
 
-    T visit(LessThan expression);
+    T visit(Return returnStat);
 
-    T visit(Minus expression);
+    T visit(Break breakStat);
 
-    T visit(Modulo expression);
+    T visit(Continue continueStat);
 
-    T visit(NotEqual expression);
+    T visit(Skip skip);
 
-    T visit(Or expression);
+    T visit(LocalVariableDef localVariableDef);
 
-    T visit(Plus expression);
+    T visit(Increment increment);
 
-    T visit(Times expression);
+    T visit(Decrement decrement);
 
-    T visit(Negative expression);
 
-    T visit(Not expression);
+    // Expression
+    T visit(Plus plusExpr);
 
-    T visit(BooleanValue expression);
+    T visit(Minus minusExpr);
 
-    T visit(IntegerValue expression);
+    T visit(Times timesExpr);
 
-    T visit(StringValue expression);
+    T visit(Division divExpr);
 
-    T visit(ArrayCall expression);
+    T visit(Modulo moduloExpr);
 
-    T visit(FieldCall expression);
+    T visit(Equals equalsExpr);
 
-    T visit(Identifier expression);
+    T visit(GreaterThan gtExpr);
 
-    T visit(MethodCall expression);
+    T visit(LessThan lessThanExpr);
 
-    T visit(NewArray expression);
+    T visit(And andExpr);
 
-    T visit(NewClassInstance expression);
+    T visit(Or orExpr);
 
-    T visit(Self expression);
+    T visit(Negative negativeExpr);
 
-    //    Statement
-    T visit(LocalVariableDef statement);
+    T visit(Not notExpr);
 
-    T visit(LocalVariableDefinition statement);
+    T visit(MethodCall methodCall);
 
-    T visit(Return statement);
+    T visit(Identifier identifier);
 
-    T visit(Assign statement);
+    T visit(Self self);
 
-    T visit(Block statement);
+    T visit(IntValue intValue);
 
-    T visit(Break statement);
+    T visit(NewArray newArray);
 
-    T visit(Conditional statement);
+    T visit(BoolValue booleanValue);
 
-    T visit(Skip statement);
+    T visit(StringValue stringValue);
 
-    T visit(Continue statement);
+    T visit(NewClassInstance newClassInstance);
 
-    T visit(Decrement statement);
+    T visit(FieldCall fieldCall);
 
-    T visit(Increment statement);
+    T visit(ArrayCall arrayCall);
 
-    T visit(Print statement);
+    T visit(NotEquals notEquals);
 
-    T visit(While statement);
+    //declarations
+    T visit(ClassDeclaration classDeclaration);
 
-//    Declaration
-    T visit(FieldDeclaration declaration);
+    T visit(EntryClassDeclaration entryClassDeclaration);
 
-    T visit(ParameterDeclaration declaration);
+    T visit(FieldDeclaration fieldDeclaration);
 
-    T visit(MethodDeclaration declaration);
+    T visit(ParameterDeclaration parameterDeclaration);
 
-    T visit(ClassDeclaration declaration);
+    T visit(MethodDeclaration methodDeclaration);
 
-    T visit(EntryClassDeclaration declaration);
+    T visit(LocalVariableDefinitions localVariableDefinitions);
 
-    T visit(Program declaration);
-
+    T visit(Program program);
 
 }

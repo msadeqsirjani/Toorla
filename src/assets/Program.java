@@ -1,28 +1,29 @@
 package assets;
 
-import assets.declaration.description.ClassDeclaration;
+import assets.declarations.classes.ClassDeclaration;
 import visitor.Visitor;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Program extends Tree {
-    private ArrayList<ClassDeclaration> classes;
+    private ArrayList<ClassDeclaration> classes = new ArrayList<>();
 
-    public Program() {
-        classes = new ArrayList<>();
+
+    public void addClass(ClassDeclaration classDeclaration) {
+        classes.add(classDeclaration);
     }
 
-    public ArrayList<ClassDeclaration> getClasses() {
+    public List<ClassDeclaration> getClasses() {
         return classes;
     }
 
     @Override
-    public <T> T accept(Visitor<T> visitor) {
-        return visitor.visit(this);
+    public String toString() {
+        return "Program";
     }
 
-    @Override
-    public String toString() {
-        return "program";
+    public <R> R accept(Visitor<R> visitor) {
+        return visitor.visit(this);
     }
 }

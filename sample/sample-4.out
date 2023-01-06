@@ -1,0 +1,17 @@
+(( entry class (Identifier,Sample2) ((PUBLIC) method (Identifier,main)(IntType) (
+(var (Identifier,a_1) (IntValue,2))
+(
+(var (Identifier,a_2) (&& (Identifier,_a) (BoolValue,true)))
+(= (Identifier,a) (|| (Identifier,b) (&& (Identifier,c) (IntValue,2))))
+(var (Identifier,_a_3) (BoolValue,false))
+(var (Identifier,b_4) (&& (Identifier,_a) (BoolValue,true)))
+(var (Identifier,c_5) (IntValue,1))
+(var (Identifier,d_6) (IntValue,1))
+(++ (+ (Identifier,c) (Identifier,d)))
+(-- (+ (Identifier,c) (Identifier,d)))
+)
+(return (IntValue,0))
+ )
+)
+)
+)
