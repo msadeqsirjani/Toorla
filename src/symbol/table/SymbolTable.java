@@ -16,7 +16,7 @@ public class SymbolTable {
     // start static members
 
     private static SymbolTable top;
-    private static SymbolTable root;
+    public static SymbolTable root;
 
     private static Stack<SymbolTable> stack = new Stack<>();
     private static Queue<SymbolTable> queue = new LinkedList<>();
